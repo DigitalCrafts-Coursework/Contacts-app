@@ -14,7 +14,15 @@ export default class ContactsForm extends Component {
         zipCode: "",
       },
     };
+    this.setContactToUpdate();
   }
+
+  setContactToUpdate = () => {
+    console.log("props in the form");
+    console.log(this.props);
+    // this.props.contactToUpdate &&
+    //   this.setState({ newContact: this.props.contactToUpdate });
+  };
 
   handleChange = (event) => {
     const inputName = event.target.name;

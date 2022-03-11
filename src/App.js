@@ -17,6 +17,7 @@ class App extends Component {
     updatedContacts.push(newContact);
     this.setState({
       contacts: updatedContacts,
+      contactToUpdate: "",
     });
   };
 
@@ -29,16 +30,33 @@ class App extends Component {
     });
   };
 
+  updateContact = (contact) => {
+    this.setState({ contactToUpdate: contact });
+    console.log("contact to update below");
+    console.log(this.state.contactToUpdate); //odd how this reads undefined, I believe it is becasue .setState is asyncrounous
+  };
+
   render() {
     return (
       <div>
-        <ContactsForm addContact={this.addContact} />
+        {this.state.contactToUpdate === true ? (
+          <ContactsForm
+            addContact={this.addContact}
+            contactToUpdate={this.state.contactToUpdate}
+          />
+        ) : (
+          <ContactsForm
+            addContact={this.addContact}
+            contactToUpdate={this.state.contactToUpdate}
+          />
+        )}
         {this.state.contacts.map((contact) => {
           return (
             <ContactsList
               key={Math.floor(Math.random() * 10000)}
               contact={contact}
               deleteContact={this.deleteContact}
+              updateContact={this.updateContact}
             />
           );
         })}
