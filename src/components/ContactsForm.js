@@ -27,6 +27,17 @@ export default class ContactsForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addContact(this.state.newContact);
+    this.setState({
+      newContact: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        address: "",
+        city: "",
+        state: "",
+        zipCode: "",
+      },
+    });
   };
 
   render() {
@@ -42,7 +53,7 @@ export default class ContactsForm extends Component {
               className="form-control"
               id="first-name"
               name="firstName"
-              value={this.state.firstName}
+              value={this.state.newContact.firstName}
               onChange={this.handleChange}
             />
           </div>
@@ -55,7 +66,7 @@ export default class ContactsForm extends Component {
               className="form-control"
               id="last-name"
               name="lastName"
-              value={this.state.lastName}
+              value={this.state.newContact.lastName}
               onChange={this.handleChange}
             />
           </div>
@@ -68,7 +79,7 @@ export default class ContactsForm extends Component {
               className="form-control"
               id="inputEmail4"
               name="email"
-              value={this.state.email}
+              value={this.state.newContact.email}
               onChange={this.handleChange}
             />
           </div>
@@ -83,7 +94,7 @@ export default class ContactsForm extends Component {
               id="inputAddress"
               placeholder="1234 Main St"
               name="address"
-              value={this.state.address}
+              value={this.state.newContact.address}
               onChange={this.handleChange}
             />
           </div>
@@ -96,7 +107,7 @@ export default class ContactsForm extends Component {
               className="form-control"
               id="inputCity"
               name="city"
-              value={this.state.city}
+              value={this.state.newContact.city}
               onChange={this.handleChange}
             />
           </div>
@@ -109,7 +120,7 @@ export default class ContactsForm extends Component {
               id="inputState"
               className="form-select"
               name="state"
-              value={this.state.state}
+              value={this.state.newContact.state}
               onChange={this.handleChange}
             />
           </div>
@@ -122,7 +133,7 @@ export default class ContactsForm extends Component {
               className="form-control"
               id="inputZip"
               name="zipCode"
-              value={this.state.zipCode}
+              value={this.state.newContact.zipCode}
               onChange={this.handleChange}
             />
           </div>

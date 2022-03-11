@@ -25,7 +25,7 @@ export default class ContactsList extends Component {
       >
         <div>Contacts</div>
         <br />
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card" style={{ width: "22rem" }}>
           <button className="card-footer" onClick={this.getDetailedRecord}>
             More info
           </button>
@@ -49,6 +49,22 @@ export default class ContactsList extends Component {
               <li className="list-group-item">{this.props.contact.city}</li>
               <li className="list-group-item">{this.props.contact.state}</li>
               <li className="list-group-item">{this.props.contact.zipCode}</li>
+              <li className="list-group-item">
+                <button
+                  style={{ display: "inline-block" }}
+                  className="card-footer"
+                  onClick={() => this.props.deleteContact(this.state.contact)}
+                >
+                  Delete Contact
+                </button>
+                <button
+                  style={{ display: "inline-block" }}
+                  className="card-footer"
+                  onClick={() => this.props.updateContact(this.state.contact)}
+                >
+                  Update Contact
+                </button>
+              </li>
             </ul>
           )}
         </div>

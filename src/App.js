@@ -20,6 +20,15 @@ class App extends Component {
     });
   };
 
+  deleteContact = (contact) => {
+    console.log(contact);
+    this.setState({
+      contacts: this.state.contacts.filter((contactFromArray) => {
+        return contactFromArray.email !== contact.email;
+      }),
+    });
+  };
+
   render() {
     return (
       <div>
@@ -29,6 +38,7 @@ class App extends Component {
             <ContactsList
               key={Math.floor(Math.random() * 10000)}
               contact={contact}
+              deleteContact={this.deleteContact}
             />
           );
         })}
