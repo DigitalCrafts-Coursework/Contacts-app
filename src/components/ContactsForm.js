@@ -14,14 +14,31 @@ export default class ContactsForm extends Component {
         zipCode: "",
       },
     };
-    this.setContactToUpdate();
   }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.contactToUpdate !== this.props.contactToUpdate) {
+      this.setContactToUpdate();
+    }
+  };
 
   setContactToUpdate = () => {
     console.log("props in the form");
     console.log(this.props);
-    // this.props.contactToUpdate &&
-    //   this.setState({ newContact: this.props.contactToUpdate });
+    const { firstName, lastName, email, address, city, state, zipCode } =
+      this.props.contactToUpdate;
+
+    const contactInfoToUpdate = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      address: address,
+      city: city,
+      state: state,
+      zipCode: zipCode,
+    };
+    this.props.contactToUpdate &&
+      this.setState({ newContact: contactInfoToUpdate });
   };
 
   handleChange = (event) => {
